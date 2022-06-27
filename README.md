@@ -25,6 +25,3 @@ The repository's code is contained in a notebook ("ps1.R") stored in the Scripts
 - María Isabel Gómez - [isabelgomezl](https://github.com/isabelgomezl)
 - Paola Ortíz - [ortizpao](https://github.com/ortizpao)
 - Sofía Vanegas - [svanegasf](https://github.com/svanegasf)
-
-
-hola
