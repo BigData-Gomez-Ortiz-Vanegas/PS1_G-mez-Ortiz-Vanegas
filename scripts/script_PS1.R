@@ -1,3 +1,75 @@
+## PSet 1
+
+#Punto 2
+setwd("C:/Users/USER/OneDrive - Universidad de los Andes/Escritorio/BigData/PS1")
+rm(list=ls())
+
+require(pacman)
+p_load(tidyverse, rvest)
+
+# Scrappear 10 htmls
+for (i in 1:10)
+{
+  assign(paste("datos_ignacio_",i, sep=""), read_html(paste(
+    "https://ignaciomsarmiento.github.io/GEIH2018_sample/pages/geih_page_",i,".html", sep="")))
+}
+
+# Ponerlos en formato de tabla
+tabla_1 <- datos_ignacio_1 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_2 <- datos_ignacio_2 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_3 <- datos_ignacio_3 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_4 <- datos_ignacio_4 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_5 <- datos_ignacio_5 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_6 <- datos_ignacio_6 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_7 <- datos_ignacio_7 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_8 <- datos_ignacio_8 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_9 <- datos_ignacio_9 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+tabla_10 <- datos_ignacio_10 %>%
+  html_node(xpath = '/html/body/table') %>%
+  html_table()
+
+# Unir tablas
+tabla_final <- rbind(tabla_1, tabla_2)
+tabla_final <- rbind(tabla_final, tabla_3)
+tabla_final <- rbind(tabla_final, tabla_4)
+tabla_final <- rbind(tabla_final, tabla_5)
+tabla_final <- rbind(tabla_final, tabla_6)
+tabla_final <- rbind(tabla_final, tabla_7)
+tabla_final <- rbind(tabla_final, tabla_8)
+tabla_final <- rbind(tabla_final, tabla_9)
+tabla_final <- rbind(tabla_final, tabla_10)
+
+## Exportar 
+write.csv(tabla_final ,"tabla_final_ps1.csv")
+
+
 install.packages("pacman")
 install.packages("tidyverse")
 install.packages("ggplot")
@@ -10,8 +82,6 @@ ls(datos)
 df <- datos[datos$ocu == 1,]
 df <- df[df$age >= 18,]
 df <- df[df$dominio == "BOGOTA",]
-
-
 
 #Punto 3
 
@@ -130,7 +200,7 @@ ols_gender <- lm(formula = log_wage ~ sex, data = tabla_final)
 library(stargazer)
 stargazer(ols_gender,type = "text",title = "Gender Model OLS", out = "gender.doc")
 
-
+#b
 ## 4) Quedarnos solo con las variables que vamos a usar y borrar las filas que tengan missings (perdemos como 200)
 
 ## Renaming features
@@ -155,25 +225,3 @@ ggplot(data=tabla_final, mapping = aes(x = age, y = pred_ols)) +
   geom_point(col = "cadetblue", size = 0.5) +
   labs(x= "Edad", y = "Ingreso total observado")+
   theme_minimal() + facet_wrap(~sex)
-
-#a
-#df1 <- df[df$ingtotob > 0,]
-# gender <- lm(formula = log(ingtotob) ~ sex, data=df1)
-# stargazer(gender,type = "text",title = "Gender model", out = "gender.doc")
-# pred_gender <- predict(gender)
-
-#ggplot(data=df1, mapping = aes(x = age, y = pred_gender)) +
- # geom_point(col = "cadetblue", size = 0.5) +
-  #labs(x= "Edad", y = "Ingreso total observado")+
-  # theme_minimal()
-
-#c
-# mujeres <- df1[df1$sex == 1,]
-# female <- lm(formula = log(ingtotob) ~ sex, data=mujeres)
-# pred_female <- predict(female)
-
-# ggplot(data=mujeres, mapping = aes(x = age, y = pred_female)) +
-  # geom_point(col = "cadetblue", size = 0.5) +
-  # ylim(14.03,14.04)+
-  # labs(x= "Edad", y = "Ingreso total observado")+
-  # theme_minimal()
