@@ -4,6 +4,7 @@
 setwd("C:/Users/USER/OneDrive - Universidad de los Andes/Escritorio/BigData/PS1")
 rm(list=ls())
 
+
 require(pacman)
 p_load(tidyverse, rvest)
 
