@@ -18,7 +18,7 @@ The repository contains four folders, each of which is described below:
 
 ## :mag_right: Instructions
 
-The repository's code is contained in a notebook stored in the 'scripts' folder and the final dataset is in the 'stores' folder. The final pdf document can be found in the 'document' folder, while the 'views' folder stores all the visualizations presented in the final document. 
+The repository's code is contained in a notebook stored in the 'scripts' folder and the final dataset is in the 'stores' folder. The final pdf document can be found in the 'document' folder, while the 'views' folder stores all the graphs presented in the final document. 
 
 ## :mortar_board: Authors
 
